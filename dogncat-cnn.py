@@ -57,16 +57,19 @@ model = Sequential()
 
 model.add(Convolution2D(16, (3, 3), padding='same', activation='relu', input_shape=(128,128,3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Convolution2D(64, (3, 3), activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+
 ##add layer - joonto
 model.add(Convolution2D(32, (3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
-
+#add layer 
+model.add(Convolution2D(48, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Convolution2D(64, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 #
 
 model.add(Flatten())
-model.add(Dense(256, activation='relu'))
+model.add(Dense(32, activation='relu')) #modified 256->32
 model.add(Dense(2, activation='sigmoid'))
 
 # 대충 결과물파트
