@@ -12,12 +12,17 @@ import random
 from cv2 import cv2
 import os
 
-train_data_path = "C:\\dogs-vs-cats\\train\\"
-#train_data_path = "./train/"
+
+
+#train_data_path = "/gitProject/dogs-vs-cats/train"
+
+train_data_path = "./train/"
 # X는 입력값
 # Y는 출력값
 #   cat : 0
 #   dog : 1
+
+#########
 
 data = []
 labels = []
@@ -50,10 +55,14 @@ trainX, testX, trainY, testY = train_test_split(data, labels, test_size=0.25, ra
 # 본격적으로 레이어 쌓는 부분
 model = Sequential()
 
-model.add(Convolution2D(16, (3, 3), border_mode='same', activation='relu', input_shape=(128,128,3)))
+model.add(Convolution2D(16, (3, 3), padding='same', activation='relu', input_shape=(128,128,3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Convolution2D(64, (3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Convolution2D(32, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+
+
 
 model.add(Flatten())
 model.add(Dense(256, activation='relu'))
